@@ -4,7 +4,27 @@ module.exports = {
     index,
     new: newFlight,
     create,
+    show,
+    addDestination,
 };
+
+function addDestination(req, res) {
+    console.log(req.body)
+    Flight.findById(req.params.id, function(err, flight) {
+        flight.destinations.push(req.body);
+        flight.save(function(err){
+            console.log(flight)
+            res.redirect('/flights')
+        })
+    })
+}
+
+
+function show(req, res) {
+    Flight.findById(req.params.id, function(err, flight) {
+        res.render('flights/show', {flight});
+    })
+}
 
 function index(req, res) {
     Flight.find({}, function(err, flights) {
