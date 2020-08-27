@@ -38,10 +38,14 @@
       </tbody>
     </table> 
     <h1>View destinations</h1>
+    
     <% flight.destinations.forEach(function(d){ %>
-      <%= d.airport %>
-      <%= d.arrival %>
+    <ul>
+      <li><%= d.airport %></li>
+      <li><%= d.arrival %></li>
+    </ul>
     <% })  %>
+    
     <form id="add-destination-form" action="/flights/<%= flight._id %>/destinations" method="POST">
     <label>Airport:
         <select name="airport">
@@ -66,8 +70,10 @@
      </form>
      <h3>View Tickets</h3>
      <% tickets.forEach(function(t){ %>
-       <%= t.price %>
-       <%= t.seat %>
+      <ul>
+       <li>$<%= t.price %></li>
+       <li><%= t.seat %></li>
+      </ul>
      <% })  %>
 
 
