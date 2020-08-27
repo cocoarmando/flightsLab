@@ -8,7 +8,6 @@ const destinationSchema = new Schema({
     enum: ['AUS', 'DFW', 'DEN', 'LAX', 'SAN']
   },
   arrival: Date
-
 });
 
 const flightSchema = new Schema({
@@ -28,7 +27,8 @@ const flightSchema = new Schema({
       required: true
     },
     departs: Date,
-    destinations: [destinationSchema]
+    destinations: [destinationSchema],
+    tickets: [{type: Schema.Types.ObjectId, ref: 'Ticket'}]
 
   });
   

@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 <body>
+  <nav>
+    <a href="/flights">Flights</a>
+    <a href="/flights/new">New Flight</a>
+  </nav>
     <h1>Flight List</h1>
     <table>
       <thead>
@@ -14,6 +19,7 @@
           <th>Airport</th>
           <th>Flight Number</th>
           <th>Departs</th>
+          
           
         </tr>
       </thead>
@@ -24,6 +30,7 @@
             <td><%= flight.airport %></td>
             <td><%= flight.flightNo %></td>
             <td><%= flight.departs %></td>
+            
             
             
           </tr>
@@ -50,6 +57,18 @@
       </label><br>
       <input type="submit" value="Submit">
     </form>
+
+    <form action="/flights/<%= flight._id %>/tickets" method="POST">
+      <input type="text" name="seat">
+      <input type="number" name="price">
+      <input type="submit" value="Add a ticket">
+
+     </form>
+     <h3>View Tickets</h3>
+     <% flight.tickets.forEach(function(t){ %>
+       <%= t.price %>
+       <%= t.seat %>
+     <% })  %>
 
 
 

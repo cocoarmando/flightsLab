@@ -3,14 +3,16 @@ var router = express.Router();
 const flightsCtrl = require('../controllers/flights.js');
 
 router.get('/', flightsCtrl.index);
-
+router.get('/new', flightsCtrl.new);
 router.get('/:id', flightsCtrl.show);
 
 // GET /flights/new
-router.get('/new', flightsCtrl.new);
+
 
 // post /flights
 router.post('/', flightsCtrl.create);
+
+router.post('/:id/tickets', flightsCtrl.createTicket);
 
 
 
